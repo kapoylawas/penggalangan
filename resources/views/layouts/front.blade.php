@@ -202,39 +202,39 @@
 </head>
 <body class="bg-light">
     {{-- Header --}}
-    <div class="header bg-primary text-white py-2">
+    <div class="py-2 text-white header bg-primary">
         <div class="container">
             <div class="row d-flex align-items-center">
                 <div class="col-lg-3 social">
-                    <a href="{{ $setting->instagram_link }}" target="_blank" class="text-white"><i class="fab fa-instagram"></i></a>
-                    <a href="{{ $setting->twitter_link }}" target="_blank" class="text-white ml-3"><i class="fab fa-twitter"></i></a>
-                    <a href="{{ $setting->google_plus_link }}" target="_blank" class="text-white ml-3"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="{{ $setting->fanpage_link }}" target="_blank" class="text-white ml-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="{{ $setting->instagram_link ?? '' }}" target="_blank" class="text-white"><i class="fab fa-instagram"></i></a>
+                    <a href="{{ $setting->twitter_link ?? '' }}" target="_blank" class="ml-3 text-white"><i class="fab fa-twitter"></i></a>
+                    <a href="{{ $setting->google_plus_link ?? ''}}" target="_blank" class="ml-3 text-white"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="{{ $setting->fanpage_link ?? ''}}" target="_blank" class="ml-3 text-white"><i class="fab fa-facebook-f"></i></a>
                 </div>
-                <div class="col-lg-7 office-info text-center">
+                <div class="text-center col-lg-7 office-info">
                     <a href="" class="text-white text-decoration-none">
                         <i class="fas fa-phone-alt"></i>
-                        <span class="ml-1">{{ $setting->phone }}</span>
+                        <span class="ml-1">{{ $setting->phone ?? '' }}</span>
                     </a>
                     <a href="" class="ml-3 text-white text-decoration-none">
                         <i class="far fa-clock"></i>
-                        <span class="ml-1">{{ $setting->phone_hours }}</span>
+                        <span class="ml-1">{{ $setting->phone_hours ?? '' }}</span>
                     </a>
                     <a href="" class="ml-3 text-white text-decoration-none">
                         <i class="fas fa-envelope"></i>
-                        <span class="ml-1">{{ $setting->email }}</span>
+                        <span class="ml-1">{{ $setting->email ?? '' }}</span>
                     </a>
                 </div>
                 <div class="col-lg-2 action" style="white-space: nowrap;">
-                    <a href="{{ url('/donation') }}" class="btn btn-sm btn-light py-0 rounded-0">Donasi</a>
-                    <a href="{{ url('/campaign') }}" class="btn btn-sm btn-light py-0 rounded-0">Galang Dana</a>
+                    <a href="{{ url('/donation') }}" class="py-0 btn btn-sm btn-light rounded-0">Donasi</a>
+                    <a href="{{ url('/campaign') }}" class="py-0 btn btn-sm btn-light rounded-0">Galang Dana</a>
                 </div>
             </div>
         </div>
     </div>
 
     {{-- Navbar --}}
-    <nav class="navbar navbar-expand-sm sticky-top navbar-light bg-white border-bottom" style="top: -1px;">
+    <nav class="bg-white navbar navbar-expand-sm sticky-top navbar-light border-bottom" style="top: -1px;">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('/img/logo.png') }}" alt="">
@@ -247,7 +247,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbar1">
-                <ul class="navbar-nav ml-auto">
+                <ul class="ml-auto navbar-nav">
                     <a class="nav-link @if(request()->is('/')) active @endif" href="{{ url('/') }}">Home</a>
                     <a class="nav-link @if(request()->is('contact')) active @endif" href="{{ url('/contact') }}">Kontak</a>
                     <a class="nav-link @if(request()->is('about')) active @endif" href="{{ url('/about') }}">Tentang Kami</a>
@@ -283,41 +283,41 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-3 text-white-80">
-                    <div class="footer-logo mb-4">
+                    <div class="mb-4 footer-logo">
                         <img src="{{ asset('/img/logo2.png') }}" alt="" style="width: 170px;">
                     </div>
                     <p>
-                        {{ $setting->address }} <br>
-                        {{ $setting->city }}, {{ $setting->province }}
+                        {{ $setting->address ?? '' }} <br>
+                        {{ $setting->city ?? '' }}, {{ $setting->province ?? '' }}
                     </p>
-                    <p class="mb-1"><i class="fas fa-phone-alt mr-2"></i> {{ $setting->phone }}</p>
-                    <p class="mb-1"><i class="fas fa-envelope mr-2"></i> {{ $setting->email }}</p>
-                    <p class="mb-1"><i class="fas fa-globe mr-2"></i> {{ $setting->company_name }}</p>
+                    <p class="mb-1"><i class="mr-2 fas fa-phone-alt"></i> {{ $setting->phone ?? '' }}</p>
+                    <p class="mb-1"><i class="mr-2 fas fa-envelope"></i> {{ $setting->email ?? '' }}</p>
+                    <p class="mb-1"><i class="mr-2 fas fa-globe"></i> {{ $setting->company_name ?? '' }}</p>
                 </div>
                 <div class="col-lg-3 text-white-80">
-                    <h5 class="mb-lg-4 mb-2">Mari Berbagi</h5>
-                    <p class="mb-lg-3 mb-1">
+                    <h5 class="mb-2 mb-lg-4">Mari Berbagi</h5>
+                    <p class="mb-1 mb-lg-3">
                         <a href="{{ url('/campaign') }}" class="text-white-80 text-decoration-none">Galang Dana</a> <br>
                         <small class="text-muted">{{ tanggal_indonesia(now()) }}</small>
                     </p>
-                    <p class="mb-lg-3 mb-1">
+                    <p class="mb-1 mb-lg-3">
                         <a href="{{ url('/donation') }}" class="text-white-80 text-decoration-none">Donasi</a> <br>
                         <small class="text-muted">{{ tanggal_indonesia(now()) }}</small>
                     </p>
                 </div>
                 <div class="col-lg-3 text-white-80">
-                    <h5 class="mb-lg-4 mb-2">Bantuan</h5>
-                    <p class="mb-lg-3 mb-1"><a href="{{ url('/about') }}" class="text-white-80 text-decoration-none">Tentang Kami</a></p>
-                    <p class="mb-lg-3 mb-1"><a href="#" class="text-white-80 text-decoration-none">Syarat dan Ketentuan</a></p>
-                    <p class="mb-lg-3 mb-1"><a href="#" class="text-white-80 text-decoration-none">Kebijakan dan Privasi</a></p>
+                    <h5 class="mb-2 mb-lg-4">Bantuan</h5>
+                    <p class="mb-1 mb-lg-3"><a href="{{ url('/about') }}" class="text-white-80 text-decoration-none">Tentang Kami</a></p>
+                    <p class="mb-1 mb-lg-3"><a href="#" class="text-white-80 text-decoration-none">Syarat dan Ketentuan</a></p>
+                    <p class="mb-1 mb-lg-3"><a href="#" class="text-white-80 text-decoration-none">Kebijakan dan Privasi</a></p>
                 </div>
                 <div class="col-lg-3 text-white-80">
-                    <h5 class="mb-lg-4 mb-2">Mari Berbagi</h5>
-                    <form action="{{ url('/subscriber') }}" method="post" class="input-group mb-3">
+                    <h5 class="mb-2 mb-lg-4">Mari Berbagi</h5>
+                    <form action="{{ url('/subscriber') }}" method="post" class="mb-3 input-group">
                         <input type="text" name="email" class="form-control" placeholder="Masukan email" value="{{ old('email') }}">
                         @csrf
                         <div class="input-group-append">
-                            <button class="btn btn-primary px-3"><i class="fas fa-paper-plane"></i></button>
+                            <button class="px-3 btn btn-primary"><i class="fas fa-paper-plane"></i></button>
                         </div>
                     </form>
                 </div>

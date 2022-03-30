@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <title>{{ $setting->company_name }} - @yield('title')</title>
+    <title>{{ $setting->company_name ?? '' }} - @yield('title')</title>
 
     <link rel="icon" href="{{ url($setting->path_image ?? '') }}" type="image/*">
 
@@ -68,7 +68,7 @@
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                    <div class="row mb-2">
+                    <div class="mb-2 row">
                         <div class="col-sm-6">
                             <h1 class="m-0">@yield('title')</h1>
                         </div><!-- /.col -->
